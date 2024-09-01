@@ -1,0 +1,27 @@
+version: '3.9' # Adjust this according to the version you are using
+
+services:
+  web:
+    build: .
+    command: flask run --host=0.0.0.0
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - FLASK_APP=app
+      - PYTHONPATH=/usr/src/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    volumes:
+      - carford_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=carford
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+
+volumes:
+  carford_data:

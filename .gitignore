@@ -1,0 +1,8 @@
+# Python venv environment
+venv/
+
+# Other
+*.pyc
+__pycache__/
+.vscode/
+*.log
